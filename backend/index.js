@@ -1,8 +1,10 @@
  const express=require("express")
 const { default: mongoose } = require("mongoose")
 const productRoute=require("./routes/productRoute")
+const cors = require("cors");
 const app=express()
 
+app.use(cors())
 
 mongoose.connect("mongodb+srv://gulshen:program2022@cluster0.fg9rwde.mongodb.net/test")
     .then(res => {

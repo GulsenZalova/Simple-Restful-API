@@ -1,7 +1,5 @@
 const{ products} = require("../models/productsSchema")
 
-
-
 const productController={
     getAll:(req,res)=>{
         products.find({isDeleted: false },(err,doc)=>{
@@ -49,7 +47,7 @@ const productController={
     },
     update:(req,res)=>{
         const id=req.params.id
-        products.findById(id,{name:req.body.name,description:req.body.description},(err,docs)=>{
+        products.findByIdAndUpdate(id,{name:req.body.name,description:req.body.description,runValidators:true},(err,docs)=>{
             if(!err){
                 res.json(docs)
                 docs.save()
